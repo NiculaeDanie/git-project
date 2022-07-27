@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookify.Domain
+namespace Bookify.Domain.Exceptions
 {
-    internal class Class1
+    public class BookNotReleasedException: Exception
     {
     }
 }

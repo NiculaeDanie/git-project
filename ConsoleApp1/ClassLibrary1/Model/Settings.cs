@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookify.Domain
+namespace Bookify.Domain.Model
 {
     public class Settings
     {
@@ -15,7 +15,7 @@ namespace Bookify.Domain
             this.textSize = textSize;
             this.backgroundColor = backgroundColor;
         }
-        public Settings GetSettings()
+        public static Settings GetSettings()
         {
             return new Settings(7, "white");
         }

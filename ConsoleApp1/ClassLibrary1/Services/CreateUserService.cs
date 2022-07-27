@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookify.Domain
+namespace Bookify.Domain.Services
 {
-    internal interface IAdmin
+    public class CreateUserService
     {
-        public void addBook(Books _books, Book _book);
+        
     }
 }

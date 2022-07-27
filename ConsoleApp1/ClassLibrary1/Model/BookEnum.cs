@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookify.Domain
+namespace Bookify.Domain.Model
 {
     public class BookEnum : IEnumerator<Book>
     {
@@ -23,7 +23,7 @@ namespace Bookify.Domain
         public bool MoveNext()
         {
             position++;
-            return (position < _books.Length);
+            return position < _books.Length;
         }
 
         public void Reset()

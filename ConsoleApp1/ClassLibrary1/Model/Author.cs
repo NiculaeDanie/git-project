@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookify.Domain
+namespace Bookify.Domain.Model
 {
     public class Author
     {
         private int id { get; set; }
-        private string name { get; set; } 
+        private string name { get; set; }
         private List<Book> books { get; set; }
-        private string description { get; set; } 
+        private string description { get; set; }
 
         public Author(int id, string name, List<Book> books, string description)
         {
@@ -19,6 +19,6 @@ namespace Bookify.Domain
             this.name = name;
             this.books = books;
             this.description = description;
-        }  
+        }
     }
 }

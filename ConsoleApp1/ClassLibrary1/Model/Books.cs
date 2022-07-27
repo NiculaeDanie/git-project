@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookify.Domain
+namespace Bookify.Domain.Model
 {
-    public class Books: IEnumerable<Book>
+    public class Books : IEnumerable<Book>
     {
         private Book[] _books;
         public Books(Book[] bArray)
@@ -19,19 +19,29 @@ namespace Bookify.Domain
                 _books[i] = bArray[i];
             }
         }
+
+        public Books()
+        {
+            _books = new Book[0];
+        }
+
         public void add(Book _book)
         {
-            var books= new Book[this._books.Length+1];
-            for(int i = 0; i < this._books.Length; i++)
+            var books = new Book[_books.Length + 1];
+            for (int i = 0; i < _books.Length; i++)
             {
-                books[i] = this._books[i];
+                books[i] = _books[i];
             }
-            books[this._books.Length] = _book;
-            this._books = books;
+            books[_books.Length] = _book;
+            _books = books;
+        }
+        public int getLength()
+        {
+            return _books.Length;
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator)GetEnumerator();
+            return GetEnumerator();
         }
 
         public BookEnum GetEnumerator()
