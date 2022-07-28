@@ -3,16 +3,16 @@
 namespace Bookify.Domain.Model
 {
 
-    public abstract class Book
+    public class Book
     {
-        private int id { get; set; }
+        private string id { get; set; }
         private string title { get; set; }
-        private Author author { get; set; }
+        private List<Author> author { get; set; }
         private DateTime releaseDate { get; set; }
         private string descriprion { get; set; }
         private Status status { get; set; }
         public List<string> genre { get; set; } 
-        public Book(int id, string title, Author author, DateTime releaseDate, string descriprion, Status status, List<string> genre)
+        public Book(string id, string title, List<Author> author, DateTime releaseDate, string descriprion, Status status, List<string> genre)
         {
             this.id = id;
             this.title = title;
@@ -24,12 +24,13 @@ namespace Bookify.Domain.Model
         }
         public string getContent()
         {
-            if(this.status == (Status)2)
+            if(this.status == (Status)1)
             {
-                throw new BookNotReleasedException();
+                throw new BookNotReleasedException("Book was not released yet");
             }
             return this.descriprion;
         }
+
     }
 
     public enum Status

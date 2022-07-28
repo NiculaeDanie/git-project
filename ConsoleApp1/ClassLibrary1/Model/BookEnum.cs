@@ -11,9 +11,8 @@ namespace Bookify.Domain.Model
     {
         public Book[] _books;
 
-        // Enumerators are positioned before the first element
-        // until the first MoveNext() call.
         int position = -1;
+        private bool disposedValue;
 
         public BookEnum(Book[] list)
         {
@@ -29,11 +28,6 @@ namespace Bookify.Domain.Model
         public void Reset()
         {
             position = -1;
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
         }
 
         object IEnumerator.Current
@@ -57,6 +51,28 @@ namespace Bookify.Domain.Model
                     throw new InvalidOperationException();
                 }
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+
+                disposedValue = true;
+            }
+        }
+
+
+        public void Dispose()
+        {
+
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

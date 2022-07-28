@@ -18,7 +18,7 @@ namespace Bookify.Domain.Model
         {
             books.add(book);
         }
-        public List<string> getUserPrefferences()
+        public List<Book> getUserPrefferences(Books allBook)
         {
             if(books.getLength() == 0)
             {
@@ -40,9 +40,9 @@ namespace Bookify.Domain.Model
                     }
                 }
             }
-            var ordered = map.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            
             int i = 0;
-            foreach(var item in ordered.Keys)
+            foreach(var item in map.Keys)
             {
                 pref.Add(item);
                 i++;
@@ -51,7 +51,14 @@ namespace Bookify.Domain.Model
                     break;
                 }
             }
-            return pref;
+            var pBooks = new List<Book>();
+            foreach(var item in allBook)
+            {
+                if(pref.Any(x => item.genre.Any(y => y == x)) && !(books.Contains(item))){
+                    pBooks.Add(item);
+                }
+            }
+            return pBooks;
         }
     }
 }

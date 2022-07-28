@@ -40,11 +40,11 @@ namespace Bookify.Domain.Model
             history.add(book);
         }
 
-        public List<string> getPreferences()
+        public List<Book> getPreferences(Books books)
         {
             try
             {
-                return history.getUserPrefferences();
+                return history.getUserPrefferences(books);
             }
             catch(Exception e)
             {

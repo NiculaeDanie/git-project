@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Bookify.Domain.Exceptions
 {
-    public class BookNotReleasedException: Exception
+    public class BookNotReleasedException : Exception
     {
+        public BookNotReleasedException(string? message) : base(message)
+        {
+        }
     }
 }

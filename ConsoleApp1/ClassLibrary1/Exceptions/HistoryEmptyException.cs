@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bookify.Domain.Exceptions
 {
-    internal class HistoryEmptyException: Exception
+    public class HistoryEmptyException: Exception
     {
     }
 }
