@@ -13,7 +13,7 @@ namespace Bookify.Domain.Model
         private string id { get; set; }
         private string email { get; set; }
         private string password { get; set; }
-        private string name { get; set; }
+        public string name { get; set; }
         private Settings settings { get; set; }
         private ReadingHistory history { get; set; }
         public User(string id, string email, string password, string name, ReadingHistory history)
@@ -44,7 +44,7 @@ namespace Bookify.Domain.Model
         {
             try
             {
-                return history.getUserPrefferences(books);
+                return history.getUserPrefferences(books,this);
             }
             catch(Exception e)
             {

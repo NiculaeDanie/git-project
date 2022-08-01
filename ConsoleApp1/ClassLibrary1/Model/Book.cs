@@ -22,11 +22,11 @@ namespace Bookify.Domain.Model
             this.status = status;
             this.genre = genre;
         }
-        public string getContent()
+        public string getContent(User user)
         {
             if(this.status == (Status)1)
             {
-                throw new BookNotReleasedException("Book was not released yet");
+                throw new BookNotReleasedException("Book was not released yet",user);
             }
             return this.descriprion;
         }

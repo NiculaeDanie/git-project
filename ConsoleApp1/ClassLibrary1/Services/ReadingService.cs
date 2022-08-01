@@ -14,7 +14,7 @@ namespace Bookify.Domain.Services
             string bookContent;
             try
             {
-                bookContent = book.getContent();
+                bookContent = book.getContent(user);
             }
             catch (Exception ex)
             {

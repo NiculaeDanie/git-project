@@ -18,39 +18,14 @@ namespace Bookify.Domain.Model
         {
             books.add(book);
         }
-        public List<Book> getUserPrefferences(Books allBook)
+        public List<Book> getUserPrefferences(Books allBook,User user)
         {
             if(books.getLength() == 0)
             {
-                throw new HistoryEmptyException();
+                throw new HistoryEmptyException("History is empty",user);
             }
-            var pref = new List<string>();
-            Dictionary<string, int> map = new Dictionary<string, int>();
-            foreach(var book in books)
-            {
-                foreach(var genre in book.genre)
-                {
-                    if (map.ContainsKey(genre))
-                    {
-                        map[genre]++;
-                    }
-                    else
-                    {
-                        map[genre] = 1;
-                    }
-                }
-            }
-            
-            int i = 0;
-            foreach(var item in map.Keys)
-            {
-                pref.Add(item);
-                i++;
-                if (i > 4)
-                {
-                    break;
-                }
-            }
+            var genres = books.Select(p => p.genre);
+            var pref = genres.SelectMany(x => x).ToList();
             var pBooks = new List<Book>();
             foreach(var item in allBook)
             {
@@ -58,7 +33,7 @@ namespace Bookify.Domain.Model
                     pBooks.Add(item);
                 }
             }
-            return pBooks;
+            return pBooks; 
         }
     }
 }
