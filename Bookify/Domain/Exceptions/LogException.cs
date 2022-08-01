@@ -15,7 +15,11 @@ namespace Bookify.Domain.Exceptions
         }
         public void saveLog(string message, User user)
         {
-            FileStream fs = new FileStream(Directory.GetCurrentDirectory()+ "\\log.txt", FileMode.Open);
+            var path = Path.Combine(Directory.GetCurrentDirectory() + "\\log.txt");
+            if (!(File.Exists(path))){
+                using (File.Create(path));
+            }
+            FileStream fs = new FileStream(path, FileMode.Open);
             using (StreamWriter writer = new StreamWriter(fs))
             {
                 writer.WriteLine(user.name + ": " + message + " " + DateTime.Now);
